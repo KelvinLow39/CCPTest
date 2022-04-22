@@ -23,9 +23,9 @@ xhr.onload = function () {
 
 
 
-\\
- \\   console.log(id1);
- \\ console.log(id2);
+
+ console.log(id1);
+ console.log(id2);
 
 
 xhr.send();
