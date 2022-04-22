@@ -24,8 +24,8 @@ xhr.onload = function () {
 
 
 
-    document.write(obj["entities"][0]["id"]+ "<br>");
-    document.write(obj["entities"][0]["participants"][3]["id"] + "<br>");
+    console.log(document.write(obj["entities"][0]["id"]);
+    console.log(document.write(obj["entities"][0]["participants"][3]["id"]);
 
 
 xhr.send();
