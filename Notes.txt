@@ -1,0 +1,9 @@
+
+
+
+C:\Program Files (x86)\Google\Chrome\Application\chrome.exe" --disable-web-security --disable-gpu --user-data-dir=~/chromeTemp
+
+https://login.mypurecloud.com/oauth/authorize
+?client_id=<my-client-id>
+&response_type=token
+&redirect_uri=<http://example.com/oauth/callback>
