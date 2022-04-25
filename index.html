@@ -26,32 +26,29 @@ function getParameterByName(name) {
     }
 
 	  
-	 const url = "https://api.mypurecloud.com.au/api/v2/conversations/calls";
-	const myHeaders = new Headers();
-	myHeaders.append('Content-Type', 'application/json');
-	myHeaders.append('Authorization', 'bearer pGXuIDBZMBnqRdCP8hwG5S9bIPAW6HD0vYgsFCPWu4yFo-fKrasYhIHnbAAUl2Q1M7w9PKPuw8oZr--PQcWR8Q');
+
 
 if(window.location.hash) {
         console.log(location.hash);
         var token = getParameterByName('access_token');
 } 
 console.log(token)
-	  
-	  
-	  
-	  
-	  
-	  
-	  
-	  
-	  
+
+		
+		
+	//const url = "https://api.mypurecloud.com.au/api/v2/conversations/calls";
+	const url = "https://api.mypurecloud.com.au/api/v2/user/me";
+	const myHeaders = new Headers();
+	myHeaders.append('Content-Type', 'application/json');
+	myHeaders.append('Authorization', 'bearer pGXuIDBZMBnqRdCP8hwG5S9bIPAW6HD0vYgsFCPWu4yFo-fKrasYhIHnbAAUl2Q1M7w9PKPuw8oZr--PQcWR8Q');
+ 
 	  
 document.querySelector('button').addEventListener('click', function () {
 
 let response = fetch(url, {
 	method: 'GET',
 	credentials: 'include',
-	mode: 'no-cors',
+	\\mode: 'no-cors',
 	headers: myHeaders,
 	})
     .then(response => response.json())
