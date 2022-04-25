@@ -9,7 +9,10 @@
 </main>
 
 <body>
-	<h2>A Heading in body and want to keep</h2>
+	<h2>Below are the 2 ID's I need</h2>
+	
+	<div id="re1"></div>
+	<div id="re2"></div>
  <script>
 
 function getParameterByName(name) {
@@ -26,13 +29,15 @@ console.log(token)
 	
 	const url = "https://api.mypurecloud.com.au/api/v2/conversations/calls";
 	// const url = "https://api.mypurecloud.com.au/api/v2/users/me";
+	
 	const myHeaders = new Headers();
+	
 	myHeaders.append('Content-Type', 'application/json');
 	myHeaders.append('Authorization', 'bearer ' + token);
 
 	  
 document.querySelector('button').addEventListener('click', function () {
-	let response = fetch(url, {
+	let obj = fetch(url, {
 		method: 'GET',
 		// credentials: 'include',
 		// mode: 'no-cors',
@@ -40,14 +45,29 @@ document.querySelector('button').addEventListener('click', function () {
 		headers: myHeaders,
 		})
 		.then(response => response.json())
-		.then(json => console.log(json))
+		.then(data => {
+			console.log(data)
+			console.log(data.entities[0].id)
+			var id1 = data.entities[0].id
+			var id2 = data.entities[0].participants[3].id
+			document.querySelector("#re1").innerText = id1
+			document.querySelector("#re2").innerText = id2
+			
+			
+			})
 		.catch(err => console.log('Request Failed')); 
+		
+		
+		//document.write(data["entities"][0]+ "<br>");
 	
-	// var obj = JSON.parse(response);
-	//document.write("Conv ID" + "<br>");
-	//document.write(obj["entities"][0]["id"]+ "<br>");
-	//document.write("participants" + "<br>");
-	//document.write(obj["entities"][0]["participants"][3]["id"] + "<br>");
+		//console.log(json)
+		//console.log(response)
+		//const obj2 = JSON.parse(obj);
+		//document.write("Conv ID" + "<br>");
+		//document.write(obj["entities"][0]["id"]+ "<br>");
+		//document.write("participants" + "<br>");
+		//document.write(obj["entities"][0]["participants"][3]["id"] + "<br>");
+
 	
 	}, false);
   
