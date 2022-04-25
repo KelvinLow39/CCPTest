@@ -34,12 +34,9 @@ if(window.location.hash) {
 } 
 console.log(token)
 
-
-	  
-	  
-		
-	// const url = "https://api.mypurecloud.com.au/api/v2/conversations/calls";
-	const url = "https://api.mypurecloud.com.au/api/v2/users/me";
+	
+	const url = "https://api.mypurecloud.com.au/api/v2/conversations/calls";
+	// const url = "https://api.mypurecloud.com.au/api/v2/users/me";
 	const myHeaders = new Headers();
 	myHeaders.append('Content-Type', 'application/json');
 	myHeaders.append('Authorization', 'bearer ' + token);
