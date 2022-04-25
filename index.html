@@ -48,7 +48,7 @@ document.querySelector('button').addEventListener('click', function () {
 let response = fetch(url, {
 	method: 'GET',
 	credentials: 'include',
-	//mode: 'no-cors',
+
 	headers: myHeaders,
 	})
     .then(response => response.json())
@@ -61,7 +61,7 @@ let response = fetch(url, {
 
  //   document.write(obj["entities"][0]["id"]+ "<br>");
  //   document.write(obj["entities"][0]["participants"][3]["id"] + "<br>");
- 
+// mode: 'no-cors',
   
   </script>
 </body>
