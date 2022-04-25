@@ -1,25 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>CCPTest 123</title>
+<main>
+  <h2>A Simple Fetch API Example</h2>
   
-  <link href="https://fonts.googleapis.com/css?family=Dosis:400,700" rel="stylesheet">
-  <link href="style.css" rel="stylesheet">
+  <p>Use the button below to 'fetch' content from an external location via the Fetch API. The content will be displayed below:</p>
+  
+  <p class="par"></p>
 
-</head>
+  <button>Get Content</button>
+
+</main>
+
 
 <body>
 
-  <button type="button" id="myBtn" onclick="myFunction()">Try it</button>
-  
-  <div id="root"></div>
+  <script>
+    const url = "https://api.mypurecloud.com.au/api/v2/conversations/calls";
+	const myHeaders = new Headers();
+	myHeaders.append('Content-Type', 'application/json');
+	myHeaders.append('Authorization', 'bearer pGXuIDBZMBnqRdCP8hwG5S9bIPAW6HD0vYgsFCPWu4yFo-fKrasYhIHnbAAUl2Q1M7w9PKPuw8oZr--PQcWR8Q"');
 
-	<p>this i sa Test</p>
-  <script src="scripts2.js"></script>
+document.querySelector('button').addEventListener('click', function () {
+
+let response = fetch(url, {
+	method: 'GET',
+	credentials: 'include',
+	mode: 'no-cors',
+	headers: myHeaders,
+	})
+    .then(response => response.json())
+    .then(json => console.log(json))
+    .catch(err => console.log('Request Failed')); 
+}, false);
+  
+  
+//curl -X GET -H "Content-Type: application/json" -H "Authorization: bearer o53fcCUIBHbqdrVj_xGJ8caL7wx-iCrNRGiGThJo8Nf9t-mKbRk935_DaIMmKnQe5xvqCo5j0dJ4VCPquqhbXg" "https://api.mypurecloud.com.au/api/v2/conversations/calls"
+
+ //   document.write(obj["entities"][0]["id"]+ "<br>");
+ //   document.write(obj["entities"][0]["participants"][3]["id"] + "<br>");
+ 
+  
+  </script>
 </body>
 
 </html>
