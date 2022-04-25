@@ -10,6 +10,7 @@
 </main>
 
 <body>
+	<h2>A Heading in body</h2>
  <script>
 
 function getParameterByName(name) {
@@ -46,6 +47,7 @@ document.querySelector('button').addEventListener('click', function () {
 	var obj = JSON.parse(response);
 	document.write("Conv ID" + "<br>");
 	document.write(obj["entities"][0]["id"]+ "<br>");
+	document.write("participants" + "<br>");
 	document.write(obj["entities"][0]["participants"][3]["id"] + "<br>");
 	
 	}, false);
