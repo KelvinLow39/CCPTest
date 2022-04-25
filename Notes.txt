@@ -3,7 +3,7 @@
 
 C:\Program Files (x86)\Google\Chrome\Application\chrome.exe" --disable-web-security --disable-gpu --user-data-dir=~/chromeTemp
 
-https://login.mypurecloud.com/oauth/authorize
-?client_id=<my-client-id>
+https://login.mypurecloud.com.au/oauth/authorize
+?client_id=68110de3-b39c-4f2b-8175-bed1d3faa929
 &response_type=token
-&redirect_uri=<http://example.com/oauth/callback>
+&redirect_uri=https://kelvinlow39.github.io/CCPTest/
