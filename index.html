@@ -43,29 +43,26 @@ console.log(token)
  
 	  
 document.querySelector('button').addEventListener('click', function () {
+	let response = fetch(url, {
+		method: 'GET',
+		// credentials: 'include',
+		// mode: 'no-cors',
+		origin: 'https://kelvinlow39.github.io/CCPTest',
+		headers: myHeaders,
+		})
+		.then(response => response.json())
+		.then(json => console.log(json))
+		.catch(err => console.log('Request Failed')); 
+	}, false);
 
-	
 
-	
-	
-	
-let response = fetch(url, {
-	method: 'GET',
-	// credentials: 'include',
-	// mode: 'no-cors',
-	origin: 'https://kelvinlow39.github.io/CCPTest',
-	headers: myHeaders,
-	})
-    .then(response => response.json())
-    .then(json => console.log(json))
-    .catch(err => console.log('Request Failed')); 
-}, false);
+
   
   
 //curl -X GET -H "Content-Type: application/json" -H "Authorization: bearer o53fcCUIBHbqdrVj_xGJ8caL7wx-iCrNRGiGThJo8Nf9t-mKbRk935_DaIMmKnQe5xvqCo5j0dJ4VCPquqhbXg" "https://api.mypurecloud.com.au/api/v2/conversations/calls"
 
- //   document.write(obj["entities"][0]["id"]+ "<br>");
- //   document.write(obj["entities"][0]["participants"][3]["id"] + "<br>");
+document.write(response["entities"][0]["id"]+ "<br>");
+document.write(response["entities"][0]["participants"][3]["id"] + "<br>");
 
   
   </script>
