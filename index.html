@@ -9,9 +9,7 @@
 	<button>Get Content</button>
 </main>
 
-
 <body>
-
  <script>
 
 function getParameterByName(name) {
@@ -25,14 +23,13 @@ if(window.location.hash) {
         var token = getParameterByName('access_token');
 } 
 console.log(token)
-
 	
 	const url = "https://api.mypurecloud.com.au/api/v2/conversations/calls";
 	// const url = "https://api.mypurecloud.com.au/api/v2/users/me";
 	const myHeaders = new Headers();
 	myHeaders.append('Content-Type', 'application/json');
 	myHeaders.append('Authorization', 'bearer ' + token);
- 
+
 	  
 document.querySelector('button').addEventListener('click', function () {
 	let response = fetch(url, {
@@ -52,7 +49,6 @@ document.querySelector('button').addEventListener('click', function () {
 	document.write(obj["entities"][0]["participants"][3]["id"] + "<br>");
 	
 	}, false);
-
   
   </script>
 </body>
