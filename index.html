@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 
-
 <main>
   <h2>A Simple Fetch API Example</h2>
   <p>Use the button below to 'fetch' content from an external location via the Fetch API. The content will be displayed below:</p>
@@ -10,7 +9,7 @@
 </main>
 
 <body>
-	<h2>A Heading in body</h2>
+	<h2>A Heading in body and want to keep</h2>
  <script>
 
 function getParameterByName(name) {
@@ -44,11 +43,11 @@ document.querySelector('button').addEventListener('click', function () {
 		.then(json => console.log(json))
 		.catch(err => console.log('Request Failed')); 
 	
-	var obj = JSON.parse(response);
-	document.write("Conv ID" + "<br>");
-	document.write(obj["entities"][0]["id"]+ "<br>");
-	document.write("participants" + "<br>");
-	document.write(obj["entities"][0]["participants"][3]["id"] + "<br>");
+	// var obj = JSON.parse(response);
+	//document.write("Conv ID" + "<br>");
+	//document.write(obj["entities"][0]["id"]+ "<br>");
+	//document.write("participants" + "<br>");
+	//document.write(obj["entities"][0]["participants"][3]["id"] + "<br>");
 	
 	}, false);
   
