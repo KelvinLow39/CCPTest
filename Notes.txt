@@ -11,6 +11,5 @@ https://login.mypurecloud.com.au/oauth/authorize
 &response_type=token
 &redirect_uri=http://127.0.0.1:8080/
 
-
-
+cd c:\github\CCPTest
 python -m http.server 8080
