@@ -29,7 +29,7 @@ function getParameterByName(name) {
 
 
 if(window.location.hash) {
-        console.log(location.hash);
+        \\console.log(location.hash);
         var token = getParameterByName('access_token');
 } 
 console.log(token)
@@ -55,7 +55,8 @@ document.querySelector('button').addEventListener('click', function () {
 let response = fetch(url, {
 	method: 'GET',
 	// credentials: 'include',
-	mode: 'no-cors',
+	// mode: 'no-cors',
+	origin: 'https://kelvinlow39.github.io/CCPTest'
 	headers: myHeaders,
 	})
     .then(response => response.json())
