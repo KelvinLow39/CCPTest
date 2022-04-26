@@ -3,10 +3,10 @@
 
 <main>
   <h2>A Simple Fetch API Example</h2>
-  <p>Use the button below to 'fetch' content from an external location via the Fetch API. The content will be displayed below:</p>
+  <p>Use the button below to 'fetch' Current conversations and participants IDS:</p>
   <p class="par"></p>
-   <button id="btn1">Get content</button>
-	<input type="button" id="btn5" value="Get Content" />
+
+	<input type="button" id="btn1" value="Get Content" />
 
 </main>
 
@@ -35,9 +35,6 @@ if(window.location.hash) {
 } 
 console.log(token)
 
-	// const url = "https://api.mypurecloud.com.au/api/v2/users/me";
-
-
 	var url = "https://api.mypurecloud.com.au/api/v2/conversations/calls";
 	var id1 =""
 	var id2 =""
@@ -59,36 +56,15 @@ document.getElementById('btn1').addEventListener('click', function () {
 		})
 		.then(response => response.json())
 		.then(data => {
-			//console.log(data)
-			//console.log(data.entities[0].id)
 			id1 = data.entities[0].id
 			id2 = data.entities[0].participants[3].id
 			document.querySelector("#re1").innerText = id1
 			document.querySelector("#re2").innerText = id2
-			//console.log(id1)
-			//console.log(id2)
-			var url2 = "https://api.mypurecloud.com.au/api/v2/conversations/" + id1 + "/participants/" + id2 +"/digits";
-			//const url3 = url2
-			//console.log(url2)
-			
-			
 		})
 		.catch(err => console.log('Request Failed')); 
-	
-
-	
 	}, false);
 
-
-
-
-//var url2 = "https://api.mypurecloud.com.au/api/v2/conversations/" + id1 + "/participants/" + id2 +"/digits";
-//console.log(url2)
-
 document.getElementById('btn2').addEventListener('click', function () {
-	console.log("start")
-	console.log(id1)
-	console.log(id2)
 	url2 = "https://api.mypurecloud.com.au/api/v2/conversations/" + id1 + "/participants/" + id2 +"/digits"
 	let obj = fetch(url2, {
 		method: 'POST',
@@ -100,16 +76,6 @@ document.getElementById('btn2').addEventListener('click', function () {
 		.then(data => console.log(data))
 		.catch(err => console.log('Request Failed')); 
 	}, false);
-
-
-
-
-
-
-
-
-
-
   
   </script>
 </body>
