@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>HTML Iframes</h2>
+<p>You can use the height and width attributes to specify the size of the iframe:</p>
+
+<iframe id="CCP" src="https://sandbox-payments.secureco.co/hpp?BearerToken=9b8ff61f11293f48484ebc99630b7b7f&SecureCoAccountId=SANDBOX_TESTING_TOKENTYPE_3&RequestType=semafone&TransactionType=purchase&frameAncestors=http://127.0.0.1:8080/" height="1000" width="800" title="Iframe Example"></iframe>
+
+<script>
+
+
+function getFrameContents(){
+   var iFrame =  document.getElementById('id_description_iframe');
+   var iFrameBody;
+   if ( iFrame.contentDocument ) 
+   { // FF
+     iFrameBody = iFrame.contentDocument.getElementsByTagName('body')[0];
+   }
+   else if ( iFrame.contentWindow ) 
+   { // IE
+     iFrameBody = iFrame.contentWindow.document.getElementsByTagName('body')[0];
+   }
+    alert(iFrameBody.innerHTML);
+ }
+
+
+
+//console.log(getFrameContents())
+
+var iframe = document.getElementById("CCP");
+//var elmnt = iframe.contentWindow.document.getElementsByTagName("ccpCallReference")
+//var content = myIFrame.contentWindow.document.body.innerHTML;
+//console.log(elmnt)
+
+let ans = iframe.contents().find("##").html()
+
+ // alert(iframe.contentWindow == frames[0]); // true
+ // alert(iframe.contentWindow == frames.win); // true
+
+</script>
+
+
+
+
+
+</body>
+</html>
