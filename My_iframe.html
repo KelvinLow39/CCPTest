@@ -5,11 +5,38 @@
 <h2>HTML Iframes</h2>
 <p>You can use the height and width attributes to specify the size of the iframe:</p>
 
-<iframe id="CCP" src="https://sandbox-payments.secureco.co/hpp?BearerToken=9b8ff61f11293f48484ebc99630b7b7f&SecureCoAccountId=SANDBOX_TESTING_TOKENTYPE_3&RequestType=semafone&TransactionType=purchase&frameAncestors=http://127.0.0.1:8080/" height="1000" width="800" title="Iframe Example"></iframe>
+<iframe id="CCP" " height="1000" width="800" title="Iframe Example"></iframe>
 
 <script>
 
+var dtmf = "1234"
+var sessionid = "3245"
+var endpoint = "12345"
 
+
+let windowObjectReference;
+let windowFeatures = "left=100,top=100,width=320,height=320";
+
+function openRequestedPopup33() {
+	var url5 = "https://sandbox-payments.secureco.co/hpp?BearerToken=cc9f2f50aeb36434558cc7cea0f510b3&SecureCoAccountId=SANDBOX_TESTING_TOKENTYPE_3&RequestType=semafone&TransactionType=purchase"
+	url5 = url5 + "&SemafoneCrn=" + dtmf
+	//url5.append("&SemafoneSessionID=" + sessionid);
+	//url5.append("&SemafoneEndpoint=" + endpiont);
+	console.log(url5)
+	windowObjectReference = window.open(url5, "mozillaWindow", windowFeatures);
+	}
+
+
+
+
+
+
+function openRequestedPopup() {
+  windowObjectReference = window.open("http://www.mozilla.org/", "mozillaWindow", windowFeatures);
+}
+
+
+openRequestedPopup33()
 function getFrameContents(){
    var iFrame =  document.getElementById('id_description_iframe');
    var iFrameBody;
