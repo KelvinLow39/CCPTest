@@ -2,37 +2,16 @@
 <html lang="en">
 
 <main>
-  <h2>Sample Get CRN and send DTMF</h2>
+  <h2>Collect Credit Card Payment</h2>
   <p>Use the button below to 'fetch' Current conversations and participants IDS:</p>
   <p class="par"></p>
 
-	<input type="button" id="btn1" value="Get Content" />
+	<input type="button" id="btn1" value="Start Transaction" />
 
 </main>
 
 <body>
-	<h2>Below are the 2 ID's I need</h2>
-	
-	<div id="re1"></div>
-	<div id="re2"></div>
 
-	<br>
-	
-	<input type="button" id="btn2" value="Get CRN" />	
-	<h2>The CRN and Session ID</h2>
-	<div id="crn"></div>
-	<div id="sessionid"></div>
-	<br>
-	
-	<input type="button" id="btn3" value="Send DTMF" />	
-	<br>
-	<br>
-<input type="button" id="btn4" value="Get Endpiont" />
-	<div id="endpiont"></div>	
-	<br>
-	<br>
-<div id="iframeDisplay"></div> 
-	
  <script>
 
 
@@ -108,7 +87,13 @@ function openRequestedPopup() {
 	windowObjectReference = window.open(url5, "mozillaWindow", windowFeatures);
 	}
 
-	
+function wait(ms){
+   var start = new Date().getTime();
+   var end = start;
+   while(end < start + ms) {
+     end = new Date().getTime();
+  }
+}	
 	
 
 	
@@ -130,12 +115,8 @@ document.getElementById('btn1').addEventListener('click', function () {
 			document.querySelector("#re2").innerText = id2
 		})
 		.catch(err => console.log('Request Failed')); 
-	}, false);
 
 
-
-
-document.getElementById('btn2').addEventListener('click', function () {
 	url2 = "https://sandboxapi.secureco.co/V2/semafone/getnextcrn"
 	let obj = fetch(url2, {
 		method: 'GET',
@@ -155,11 +136,8 @@ document.getElementById('btn2').addEventListener('click', function () {
 			//console.log(sessionid)
 			})
 		.catch(err => console.log('Request Failed')); 
-	}, false);
 
 
-
-document.getElementById('btn3').addEventListener('click', function () {
 	url2 = "https://api.mypurecloud.com.au/api/v2/conversations/" + id1 + "/participants/" + id2 +"/digits"
 	let obj = fetch(url2, {
 		method: 'POST',
@@ -176,12 +154,12 @@ document.getElementById('btn3').addEventListener('click', function () {
 			//openRequestedPopup()
 		})
 		.catch(err => console.log('Request Failed Send DTMF')); 
-	}, false);
 
 
-//Send Post
+console.log('before');
+wait(2000);  //7 seconds in milliseconds
+console.log('after');
 
-document.getElementById('btn4').addEventListener('click', function () {
 	url4 = "https://sandboxapi.secureco.co/V2/semafone/getsecuresession"
 	let obj = fetch(url4, {
 		method: 'POST',
@@ -200,13 +178,6 @@ document.getElementById('btn4').addEventListener('click', function () {
 		})
 		.catch(err => console.log('Request Failed'));
 	}, false);
-
-
-
-
-
-
-
 
 
 

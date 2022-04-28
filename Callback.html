@@ -2,34 +2,15 @@
 <html lang="en">
 
 <main>
-
-  <p>Use the button below to do a redirect:</p>
-  <p class="par"></p>
-
-	<input type="button" id="btn1" value="Get Content" />
-
+  <p>Should be Redirected</p>
 </main>
 
 <body>
-
  <script>
-
-
-
-//console.log(token)
-
-
-
-
-document.getElementById('btn1').addEventListener('click', function () {
 
 var url2 = "https://login.mypurecloud.com.au/oauth/authorize?client_id=68110de3-b39c-4f2b-8175-bed1d3faa929&response_type=token&redirect_uri=http://127.0.0.1:8080/"
 let url = url2;
       window.location.href = url;
-
-	}, false);
-
-
 
   </script>
 </body>
