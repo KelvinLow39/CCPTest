@@ -1,13 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
 
+
+
+<head>
+
+</head>
 <main>
   <h2>Collect Credit Card Payment</h2>
-  <p>Use the button below to 'fetch' Current conversations and participants IDS:</p>
-  <p class="par"></p>
+   <p class="par"></p>
 
 	<input type="button" id="btn1" value="Start Transaction" />
-
+<br>
+<img src="SecureCo.jpg" alt="SecureCo.jpg" style="width:500px;height:600px;">
 </main>
 
 <body>
@@ -77,7 +82,6 @@ if(window.location.hash) {
 
 let windowObjectReference;
 let windowFeatures = "left=100,top=100,width=820,height=820";
-
 function openRequestedPopup() {
 	var url5 = "https://sandbox-payments.secureco.co/hpp?BearerToken=cc9f2f50aeb36434558cc7cea0f510b3&SecureCoAccountId=SANDBOX_TESTING_TOKENTYPE_3&RequestType=semafone&TransactionType=purchase"
 	url5 = url5 + "&SemafoneCrn=" + dtmf
@@ -95,9 +99,6 @@ function wait(ms){
   }
 }	
 	
-
-	
-
 	  
 document.getElementById('btn1').addEventListener('click', function () {
 	let obj = fetch(url, {
@@ -111,14 +112,15 @@ document.getElementById('btn1').addEventListener('click', function () {
 		.then(data => {
 			id1 = data.entities[0].id
 			id2 = data.entities[0].participants[3].id
-			document.querySelector("#re1").innerText = id1
-			document.querySelector("#re2").innerText = id2
+			Step2()
 		})
 		.catch(err => console.log('Request Failed')); 
+	}, false);
 
 
+function Step2() {
 	url2 = "https://sandboxapi.secureco.co/V2/semafone/getnextcrn"
-	let obj = fetch(url2, {
+	let obj2 = fetch(url2, {
 		method: 'GET',
 		origin: 'http://127.0.0.1:8080',
 		headers: myHeaders2,
@@ -130,16 +132,19 @@ document.getElementById('btn1').addEventListener('click', function () {
 			sessionid = data.APIData.SessionId
 			GetCRN = data.APIData
 			console.log(GetCRN)
-			document.querySelector("#crn").innerText = dtmf
-			document.querySelector("#sessionid").innerText = sessionid
-			//console.log(dtmf)
-			//console.log(sessionid)
+
+			console.log(dtmf)
+			console.log(sessionid)
+			Step3()
 			})
 		.catch(err => console.log('Request Failed')); 
+	}
+	
 
 
+function Step3() {
 	url2 = "https://api.mypurecloud.com.au/api/v2/conversations/" + id1 + "/participants/" + id2 +"/digits"
-	let obj = fetch(url2, {
+	let obj3 = fetch(url2, {
 		method: 'POST',
 		body: '{"digits": "##' + dtmf + '"}',
 		origin: 'http://127.0.0.1:8080',
@@ -148,37 +153,35 @@ document.getElementById('btn1').addEventListener('click', function () {
 		.then(response => response.json())
 		.then(data => {
 			console.log('{"digits": "##' + dtmf + '"}')
-			console.log(data)
-			//document.getElementById("CCP").src=url3
-			//sendPost()
-			//openRequestedPopup()
+			wait(3000);  //7 seconds in milliseconds
+			Step4()
 		})
 		.catch(err => console.log('Request Failed Send DTMF')); 
 
+}
 
-console.log('before');
-wait(2000);  //7 seconds in milliseconds
-console.log('after');
+//console.log('before');
+//wait(2000);  //7 seconds in milliseconds
+//console.log('after');
 
+
+function Step4() {
 	url4 = "https://sandboxapi.secureco.co/V2/semafone/getsecuresession"
-	let obj = fetch(url4, {
+	let obj4 = fetch(url4, {
 		method: 'POST',
 		body: "{CRNumber : \'" + dtmf + "\', SessionId: \'" + sessionid + "\'}",
-		//body: GetCRN,
 		origin: 'http://127.0.0.1:8080',
 		headers: myHeaders2,
 		})
 		.then(response => response.json())
 		.then(data => {
-			console.log(data)
+			console.log('Step4')
 			endpiont = data.APIData.endPoint
 			console.log(endpiont)
-			document.querySelector("#endpiont").innerText = endpiont
 			openRequestedPopup()
 		})
-		.catch(err => console.log('Request Failed'));
-	}, false);
-
+		.catch(err => console.log('Request Failed Step 4'));
+	}
 
 
   </script>
