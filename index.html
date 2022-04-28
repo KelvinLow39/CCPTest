@@ -163,7 +163,7 @@ function Step3() {
 		.then(response => response.json())
 		.then(data => {
 			console.log('{"digits": "##' + dtmf + '"}')
-			wait(1000);  //7 seconds in milliseconds
+			wait(3000);  //7 seconds in milliseconds
 			Step4()
 		})
 		.catch(err => console.log('Request Failed Send DTMF')); 
