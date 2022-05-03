@@ -58,67 +58,49 @@ function getParameterByName(name) {
     }
 
 
-
-
-
-
 if(window.location.hash) {
         console.log(location.hash);
         var token = getParameterByName('access_token');
 } 
-//console.log(token)
 
 
+var url1 = ""
+var url2 = ""
+var url3 = ""
+var url4 = ""
+var url5 = ""
+var id1 =""
+var id2 =""
+var dtmf = ""
+var sessionid = ""
+var GetCRN = ""
+var firstname = ""
+var lastname = ""
+var agentid = ""
 
 
+const myHeaders = new Headers();
+myHeaders.append('Content-Type', 'application/json');
+myHeaders.append('Authorization', 'bearer ' + token);
 
 
+const myHeaders2 = new Headers();
+myHeaders2.append('Content-Type', 'application/json');
+myHeaders2.append('Authorization', 'bearer cc9f2f50aeb36434558cc7cea0f510b3');
 
-	var url = "https://api.mypurecloud.com.au/api/v2/conversations/calls";
-	var id1 =""
-	var id2 =""
-	var url2 = ""
-	var url3 = "https://sandbox-payments.secureco.co/hpp?BearerToken=9b8ff61f11293f48484ebc99630b7b7f\
-		&SecureCoAccountId=SANDBOX_TESTING_TOKENTYPE_3\
-		&RequestType=semafone&TransactionType=purchase\
-		&SemafoneCrn=34018\
-		&SemafoneSessionID=dpmb-9d7dab40-783e-4120-b69e-19af4e387f9f-49763919\
-		&frameAncestors=http://127.0.0.1:8080/"		
-	var dtmf = "99999"
-	var sessionid = "999999"
-	var GetCRN = ""
-
-	const myHeaders = new Headers();
-	myHeaders.append('Content-Type', 'application/json');
-	myHeaders.append('Authorization', 'bearer ' + token);
-	const myHeaders2 = new Headers();
-	myHeaders2.append('Content-Type', 'application/json');
-	myHeaders2.append('Authorization', 'bearer cc9f2f50aeb36434558cc7cea0f510b3');
-	
 
 let windowObjectReference;
 let windowFeatures = "left=100,top=100,width=820,height=820";
 
-function openRequestedPopup() {
-	var url5 = "https://sandbox-payments.secureco.co/hpp?BearerToken=cc9f2f50aeb36434558cc7cea0f510b3&SecureCoAccountId=SANDBOX_TESTING_TOKENTYPE_3&RequestType=semafone&TransactionType=purchase"
-	url5 = url5 + "&SemafoneCrn=" + dtmf
-	url5 = url5 + "&SemafoneSessionID=" + sessionid
-	url5 = url5 + "&SemafoneEndpoint=" + endpiont
-	console.log(url5)
-	windowObjectReference = window.open(url5, "mozillaWindow", windowFeatures);
-	}
 
-	
-	
 
 	
 
 	  
 document.getElementById('btn1').addEventListener('click', function () {
-	let obj = fetch(url, {
+	url1 = "https://api.mypurecloud.com.au/api/v2/conversations/calls"
+	let obj = fetch(url1, {
 		method: 'GET',
-		// credentials: 'include',
-		// mode: 'no-cors',
 		origin: 'http://127.0.0.1:8080',
 		headers: myHeaders,
 		})
@@ -139,20 +121,17 @@ document.getElementById('btn2').addEventListener('click', function () {
 	url2 = "https://sandboxapi.secureco.co/V2/semafone/getnextcrn"
 	let obj = fetch(url2, {
 		method: 'GET',
-		origin: 'http://127.0.0.1:8080',
+		origin: 'http://127.0.0.1:8080/Manaul',
 		headers: myHeaders2,
 		})
 		.then(response => response.json())
 		.then(data => {
-			
 			dtmf = data.APIData.CRNumber
 			sessionid = data.APIData.SessionId
 			GetCRN = data.APIData
 			console.log(GetCRN)
 			document.querySelector("#crn").innerText = dtmf
 			document.querySelector("#sessionid").innerText = sessionid
-			//console.log(dtmf)
-			//console.log(sessionid)
 			})
 		.catch(err => console.log('Request Failed')); 
 	}, false);
@@ -160,7 +139,7 @@ document.getElementById('btn2').addEventListener('click', function () {
 
 
 document.getElementById('btn3').addEventListener('click', function () {
-	url2 = "https://api.mypurecloud.com.au/api/v2/conversations/" + id1 + "/participants/" + id2 +"/digits"
+	url3 = "https://api.mypurecloud.com.au/api/v2/conversations/" + id1 + "/participants/" + id2 +"/digits"
 	let obj = fetch(url2, {
 		method: 'POST',
 		body: '{"digits": "##' + dtmf + '"}',
@@ -202,6 +181,18 @@ document.getElementById('btn4').addEventListener('click', function () {
 	}, false);
 
 
+function openRequestedPopup() {
+	var url5 = "https://sandbox-payments.secureco.co/hpp?BearerToken=cc9f2f50aeb36434558cc7cea0f510b3&SecureCoAccountId=SANDBOX_TESTING_TOKENTYPE_3&RequestType=semafone&TransactionType=purchase"
+	url5 = url5 + "&SemafoneCrn=" + dtmf
+	url5 = url5 + "&SemafoneSessionID=" + sessionid
+	url5 = url5 + "&SemafoneEndpoint=" + endpiont
+	url5 = url5 + "&FirstName=Kelvin"
+	url5 = url5 + "&LastName=Low"
+	url5 = url5 + "&OrderNumber=ABC1234"
+	url5 = url5 + "&AgentID=Kelvin"
+	console.log(url5)
+	windowObjectReference = window.open(url5, "mozillaWindow", windowFeatures);
+	}
 
 
 
