@@ -101,7 +101,7 @@ document.getElementById('btn1').addEventListener('click', function () {
 	url1 = "https://api.mypurecloud.com.au/api/v2/conversations/calls"
 	let obj = fetch(url1, {
 		method: 'GET',
-		origin: 'http://127.0.0.1:8080',
+		origin: 'http://127.0.0.1:8080/Manaul/',
 		headers: myHeaders,
 		})
 		.then(response => response.json())
@@ -121,7 +121,7 @@ document.getElementById('btn2').addEventListener('click', function () {
 	url2 = "https://sandboxapi.secureco.co/V2/semafone/getnextcrn"
 	let obj = fetch(url2, {
 		method: 'GET',
-		origin: 'http://127.0.0.1:8080/Manaul',
+		origin: 'http://127.0.0.1:8080/Manaul/',
 		headers: myHeaders2,
 		})
 		.then(response => response.json())
@@ -140,10 +140,10 @@ document.getElementById('btn2').addEventListener('click', function () {
 
 document.getElementById('btn3').addEventListener('click', function () {
 	url3 = "https://api.mypurecloud.com.au/api/v2/conversations/" + id1 + "/participants/" + id2 +"/digits"
-	let obj = fetch(url2, {
+	let obj = fetch(url3, {
 		method: 'POST',
 		body: '{"digits": "##' + dtmf + '"}',
-		origin: 'http://127.0.0.1:8080',
+		origin:'http://127.0.0.1:8080/Manaul/',
 		headers: myHeaders,
 		})
 		.then(response => response.json())
@@ -166,7 +166,7 @@ document.getElementById('btn4').addEventListener('click', function () {
 		method: 'POST',
 		body: "{CRNumber : \'" + dtmf + "\', SessionId: \'" + sessionid + "\'}",
 		//body: GetCRN,
-		origin: 'http://127.0.0.1:8080',
+		origin: 'http://127.0.0.1:8080/Manaul/',
 		headers: myHeaders2,
 		})
 		.then(response => response.json())
