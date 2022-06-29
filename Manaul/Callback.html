@@ -23,7 +23,9 @@
 
 document.getElementById('btn1').addEventListener('click', function () {
 
-var url2 = "https://login.mypurecloud.com.au/oauth/authorize?client_id=68110de3-b39c-4f2b-8175-bed1d3faa929&response_type=token&redirect_uri=http://127.0.0.1:8080/Manaul/"
+var //url2 = "https://login.mypurecloud.com.au/oauth/authorize?client_id=68110de3-b39c-4f2b-8175-bed1d3faa929&response_type=token&redirect_uri=http://127.0.0.1:8080/Manaul/"
+var url2 = "https://sandbox-payments.secureco.co/hpp?BearerToken=9b8ff61f11293f48484ebc99630b7b7f&SecureCoAccountId=SANDBOX_TESTING_TOKENTYPE_3&RequestType=semafone&TransactionType=purchase&FirstName=Kelvin&LastName=Low&AgentID=Kelvin&frameAncestors=https://apps.mypurecloud.com.au"
+
 let url = url2;
       window.location.href = url;
 
